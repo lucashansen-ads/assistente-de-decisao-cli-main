@@ -57,15 +57,32 @@ function perguntarDor() {
     }
 }
 
+
+function decidirTreino(energia, humor, sono, dor) {
+    console.log("\n📊 Analisando suas respostas...\n");
+
+    if (dor === "s" && energia <= 2) {
+        return "❌ Melhor não treinar hoje. Seu corpo pede descanso.";
+
+    } else if (energia <= 2 && humor <= 2) {
+        return "🧘 Que tal um descanso ativo? Alongamento ou caminhada leve.";
+
+    } else if (energia >= 4 && sono === "s" && dor === "n") {
+        return "✅ Pode treinar normalmente! Bom dia para evoluir.";
+
+    } else {
+        return "⚠️ Um treino leve é a melhor escolha hoje.";
+    }
+}
+
+
 const energia = perguntarNivelEnergia();
 const humor = perguntarHumor();
 const sono = perguntarSono();
 const dor = perguntarDor();
 
-console.log("\nResumo das respostas:");
-console.log("Energia:", energia);
-console.log("Humor:", humor);
-console.log("Dormiu bem:", sono);
-console.log("Dor:", dor);
+const resultado = decidirTreino(energia, humor, sono, dor);
+
+console.log("Resultado:", resultado);
 
 
